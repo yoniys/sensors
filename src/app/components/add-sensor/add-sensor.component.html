@@ -1,0 +1,18 @@
+<form #sensorForm="ngForm" (ngSubmit)="addSensor()">
+    <label>שם ההתקן:</label>
+    <input type="text" name="WebSiteDeviceName" [(ngModel)]="newSensor.WebSiteDeviceName" required>
+
+    <label>סוג התקן:</label>
+    <input type="text" name="DeviceTypeHebrew" [(ngModel)]="newSensor.DeviceTypeHebrew" required>
+
+    <label class="text-center">מזהה התקן:</label>
+    <input type="text" name="DeviceId" [(ngModel)]="newSensor.DeviceId" required>
+
+    <label>סוג:</label>
+    <input type="text" name="DeviceType" [(ngModel)]="newSensor.DeviceType" required>
+
+    <label>תמונה (שם הקובץ):</label>
+    <input type="text" name="Picture" [(ngModel)]="newSensor.Picture" required>
+
+    <button type="submit">הוסף התקן</button>
+</form>

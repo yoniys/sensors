@@ -1,0 +1,10 @@
+<div class="sensor-card">
+  <img [src]="getImagePath()" [alt]="sensor.DeviceTypeHebrew">
+  <h3>{{ sensor.WebSiteDeviceName }}</h3>
+  <p>תאריך עדכון אחרון: {{ getFormattedDate() }}</p>
+  <div
+   class="status-indicator"
+   [ngStyle]="{'background-color': getStatusColor()}"
+   (click)="toggleStatus()">
+  </div>
+</div>

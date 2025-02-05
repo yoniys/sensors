@@ -1,0 +1,17 @@
+.sensor-card {
+  max-width: 280px;
+  margin: 15px;
+  text-align: center;
+}
+
+.sensor-img {
+  width: 100px;
+  height: auto;
+  margin: 10px 0;
+}
+
+.status-text {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10px;
+}

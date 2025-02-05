@@ -1,0 +1,24 @@
+<p>sensor-list works!</p>
+<div class="container">
+  <h2>Sensor Dashboard</h2>
+  <p>Total: {{ sensors.length }} | Working: {{ workingCount }} | Faulty: {{ faultyCount }}</p>
+
+  <!-- <table>
+    <tr *ngFor="let sensor of sensors">
+      <td>{{ sensor.WebSiteDeviceName }}</td>
+      <td>
+        <span
+          (click)="toggleStatus(sensor.DeviceId)"
+          [class.green]="sensor.status === 'working'"
+          [class.red]="sensor.status === 'faulty'">
+        </span>
+      </td>
+      <td>{{ sensor.LastReportDate | date:'short' }}</td>
+    </tr>
+  </table> -->
+  <div class="sensor-container">
+    <app-sensor-card *ngFor="let sensor of sensors" [sensor]="sensor"></app-sensor-card>
+  </div>
+
+  <button routerLink="/add-sensor">Add Sensor</button>
+</div>
