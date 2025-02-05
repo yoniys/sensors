@@ -4,3 +4,9 @@
   gap: 20px;
   justify-content: center;
 }
+.center{
+  text-align: center;
+}
+.space{
+  margin-right: 10px;
+}

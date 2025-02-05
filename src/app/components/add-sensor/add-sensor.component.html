@@ -1,18 +1,32 @@
-<form #sensorForm="ngForm" (ngSubmit)="addSensor()">
-    <label>שם ההתקן:</label>
-    <input type="text" name="WebSiteDeviceName" [(ngModel)]="newSensor.WebSiteDeviceName" required>
+<mat-card class="center">
+  <mat-card-title>הוסף חיישן חדש</mat-card-title>
+<br>
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label>שם ההתקן באתר</mat-label>
+      <input matInput [(ngModel)]="newSensor.WebSiteDeviceName" required>
+    </mat-form-field>
+    <br>
 
-    <label>סוג התקן:</label>
-    <input type="text" name="DeviceTypeHebrew" [(ngModel)]="newSensor.DeviceTypeHebrew" required>
+    <mat-form-field appearance="outline">
+      <mat-label>סוג התקן</mat-label>
+      <input matInput [(ngModel)]="newSensor.DeviceType" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>שם התקן</mat-label>
+      <input matInput [(ngModel)]="newSensor.DeviceTypeHebrew" required>
+    </mat-form-field>
+    <br>
 
-    <label class="text-center">מזהה התקן:</label>
-    <input type="text" name="DeviceId" [(ngModel)]="newSensor.DeviceId" required>
+    <mat-form-field appearance="outline">
+      <mat-label>תמונה (שם קובץ)</mat-label>
+      <input matInput [(ngModel)]="newSensor.Picture" required>
+    </mat-form-field>
+  </mat-card-content>
+  <br>
 
-    <label>סוג:</label>
-    <input type="text" name="DeviceType" [(ngModel)]="newSensor.DeviceType" required>
-
-    <label>תמונה (שם הקובץ):</label>
-    <input type="text" name="Picture" [(ngModel)]="newSensor.Picture" required>
-
-    <button type="submit">הוסף התקן</button>
-</form>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="addSensor()">➕ שמור</button>
+  </mat-card-actions>
+</mat-card>

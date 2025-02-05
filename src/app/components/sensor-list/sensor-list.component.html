@@ -1,24 +1,29 @@
-<p>sensor-list works!</p>
 <div class="container">
-  <h2>Sensor Dashboard</h2>
-  <p>Total: {{ sensors.length }} | Working: {{ workingCount }} | Faulty: {{ faultyCount }}</p>
+  <h2 class="center">Sensor Dashboard</h2>
+  <div class="filter-container center">
+    <mat-form-field class="space" appearance="outline">
+      <mat-label>שם ההתקן באתר"</mat-label>
+      <input matInput [(ngModel)]="nameFilter" placeholder="שם ההתקן באתר">
+    </mat-form-field>
 
-  <!-- <table>
-    <tr *ngFor="let sensor of sensors">
-      <td>{{ sensor.WebSiteDeviceName }}</td>
-      <td>
-        <span
-          (click)="toggleStatus(sensor.DeviceId)"
-          [class.green]="sensor.status === 'working'"
-          [class.red]="sensor.status === 'faulty'">
-        </span>
-      </td>
-      <td>{{ sensor.LastReportDate | date:'short' }}</td>
-    </tr>
-  </table> -->
-  <div class="sensor-container">
-    <app-sensor-card *ngFor="let sensor of sensors" [sensor]="sensor"></app-sensor-card>
+    <mat-form-field appearance="outline">
+      <mat-label>תאריך עדכון אחרון</mat-label>
+      <input matInput [(ngModel)]="dateFilter" placeholder="YYYY-MM-DD">
+    </mat-form-field>
+  </div>
+  <p class="center">Total: {{ filteredSensors().length }} |
+    Working: {{ filteredWorkingCount }} |
+    Faulty: {{ filteredFaultyCount }}
+ </p>
+  <div class=" sensor-container">
+    <app-sensor-card
+      *ngFor="let sensor of filteredSensors()"
+      [sensor]="sensor">
+    </app-sensor-card>
   </div>
 
-  <button routerLink="/add-sensor">Add Sensor</button>
+  <br>
+  <div class="center">
+  <button mat-raised-button color="primary" routerLink="/add-sensor">הוסף חיישן</button>
+</div>
 </div>

@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SensorService {
 
-  private sensorsUrl = '/../../assets/sensors.json';
   private sensors$ = new BehaviorSubject<Sensor[]>([]);
 
   constructor(private http: HttpClient) {}
@@ -20,8 +19,6 @@ export class SensorService {
     this.http.get<Sensor[]>("http://localhost:4200/assets/sensors.json").subscribe(sensors => {
       this.sensors$.next(sensors);
     });
-    this.http.get('http://localhost:4200/assets/sensors.json')
-                 .subscribe(data => console.log(data));
   }
 
   getSensors(): Observable<Sensor[]> {
@@ -34,17 +31,12 @@ export class SensorService {
             ? { ...sensor, DeviceOK: sensor.DeviceOK === 1 ? 0 : 1, LastReportDate: new Date().toISOString() }
             : sensor
         );
-        console.log("updatedSensors2", updatedSensors);
         this.sensors$.next(updatedSensors as Sensor[]);
       }
 
       addSensor(newSensor: Sensor): void {
-        console.log(newSensor);
         const updatedSensors = [...this.sensors$.value, newSensor];
         this.sensors$.next(updatedSensors);
-        console.log("updatedSensors", this.sensors$.value);
-        // this.http.post('http://localhost:4200/assets/sensors.json', updatedSensors)
-        //          .subscribe(data => console.log(data));
       }
 
 }

@@ -15,11 +15,12 @@ export class AddSensorComponent implements OnInit {
   }
 
   newSensor: Sensor = {
-    DeviceId: "",
+    DeviceId: (Math.floor(Math.random() * 15)+20).toString(),
      WebSiteDeviceName: '',
       DeviceOK: 1,
        LastReportDate: new Date().toISOString(),
-        DeviceType: '', DeviceTypeHebrew: '',
+        DeviceType: '',
+         DeviceTypeHebrew: '',
          InstallDate: new Date().toISOString(),
           Picture: 'motion_hanxi' };
 

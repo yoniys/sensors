@@ -12,6 +12,8 @@ export class SensorListComponent implements OnInit {
   sensors: Sensor[] = [];
   workingCount = 0;
   faultyCount = 0;
+  nameFilter: string = '';
+  dateFilter: string = '';
 
 
 
@@ -36,6 +38,22 @@ export class SensorListComponent implements OnInit {
   updateCounts(): void {
     this.workingCount = this.sensors.filter(s => s.DeviceOK === 1).length;
     this.faultyCount = this.sensors.length - this.workingCount;
+  }
+
+  filteredSensors(): Sensor[] {
+    return this.sensors.filter(sensor => {
+      const matchesName = sensor.WebSiteDeviceName.includes(this.nameFilter) || !this.nameFilter;
+      const matchesDate = sensor.LastReportDate.includes(this.dateFilter) || !this.dateFilter;
+      return matchesName && matchesDate;
+    });
+  }
+
+  get filteredWorkingCount(): number {
+    return this.filteredSensors().filter(sensor => sensor.DeviceOK === 1).length;
+  }
+
+  get filteredFaultyCount(): number {
+    return this.filteredSensors().filter(sensor => sensor.DeviceOK === 0).length;
   }
 
 

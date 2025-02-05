@@ -32,10 +32,7 @@ export class SensorCardComponent implements OnInit {
     return `assets/${this.sensor.Picture}.png`;
   }
   toggleStatus(): void {
-    // find the DeviceId in the sensors array and toggle the status
     this.sensorService.toggleSensorStatus(this.sensor.DeviceId);
-    // this.sensor.DeviceOK = this.sensor.DeviceOK === 1 ? 0 : 1;
-    // this.sensor.LastReportDate = new Date().toISOString(); // Update last modified date
-  }
+ }
 
 }
